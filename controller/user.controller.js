@@ -7,7 +7,8 @@ class UserController {
         const { name, surname } = req.body
         const newPerson = await db.query(`INSERT INTO person (name, surname) values ($1, $2) RETURNING *`, [name, surname])  // RETURNING - после создания, вернет пользователя
 
-        res.json(newPerson.rows[0])
+        // res.json(newPerson.rows[0])
+        res.redirect("/")
     }
 
     async getUsers(req, res) {
